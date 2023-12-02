@@ -3,15 +3,23 @@ let csvString = "Index,Mass (kg),Spring 1 (m),Spring 2 (m)\n1,0.00,0.050,0.050\n
 let rows = csvString.split('\n');
 
 let header = rows[0].split(',');
-let data = rows.slice(1).map(row => row.split(','));
+let numColums = header.length;
 
-console.log(...header);
+let data = [];
+data.push(header);
 
-for (let i = 0; i < data.length; i++) {
+for (let i = 1; i < rows.length; i++) {
+    let currentRow = rows[i].split(',');
     let rowObject = {};
-    for (let j = 0; j < data[i].length; j++) {
-        rowObject[header[j]] = data[i][j];
+
+    for (let j = 0; j < numColums; j++) {
+        let key = header[j].toLowerCase();
+        rowObject[key] = currentRow[j];
     }
 
-    console.log(rowObject);
+    data.push(rowObject);
 }
+
+let arrayOfObjects = data.slice(1);
+
+console.log(arrayOfObjects); 
