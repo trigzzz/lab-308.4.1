@@ -41,3 +41,13 @@ for (let i = 0; i < arrayOfObjects.length; i++) {
 let averagemasskg = totalmasskg / arrayOfObjects.length;
 
 console.log("Average Mass (kg):", averagemasskg);
+
+
+// Part 5
+// Transforming data back into CSV format
+// Converting each object to a CSV row
+let csvRows = arrayOfObjects.map(obj => Object.values(obj).join(','));
+
+let finalCsvString = [header.join(','), ...csvRows].join('\n');
+
+console.log(finalCsvString);
