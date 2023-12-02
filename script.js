@@ -23,3 +23,21 @@ for (let i = 1; i < rows.length; i++) {
 let arrayOfObjects = data.slice(1);
 
 console.log(arrayOfObjects); 
+
+arrayOfObjects.pop();
+
+let newObject = { index: "11", "mass (kg)": "5.0", "spring 1 (m)": "0.300", "spring 2 (m)": "0.280" };
+arrayOfObjects.splice(1, 0, newObject);
+
+console.log(arrayOfObjects);
+
+// Calculate the average of the "Index" values using a loop
+let totalmasskg = 0;
+
+for (let i = 0; i < arrayOfObjects.length; i++) {
+    totalmasskg += parseInt(arrayOfObjects[i]["mass (kg)"]);
+}
+
+let averagemasskg = totalmasskg / arrayOfObjects.length;
+
+console.log("Average Mass (kg):", averagemasskg);
